@@ -10,18 +10,18 @@
 
 --
 
-## Por qué FP
+## Por qué FP: Minimizar el caos
 
-- El estado es caos. FP aisla del caos, separandolo en un unico lugar mas controlado.
-- Las lineas de codigo son el caos. FP fomenta la abstraccion y la reutilizacion, reduciendo las lineas de codigo
-- La programacion es caos. FP facilita el testing al hacer uso de funciones puras
+- El estado es caos. FP aisla del caos, separándolo en un único lugar mas controlado.
+- Cada linea de código aumenta el caos. FP fomenta la abstracción y la reutilización, reduciendo las lines de código.
+- La complejidad es caos. FP facilita el la labor de testing al hacer uso de funciones puras.
 
 --
 
 ## Por qué FP en JS
 
-- Porque es el lenguaje mas utilizado del mundo, es el lenguaje de la web.
-- Porque es un lenguaje funcional.
+- Por qué es el lenguaje mas utilizado del mundo, es el lenguaje de la web.
+- Por qué es un lenguaje funcional aunque muchos no lo crean.
 
 --
 
@@ -33,27 +33,27 @@
 
 ## Pilares
 
-- pure functions
-- composition
-- curry
-- HOF
+- Pure functions
+- Composition
+- Curry
+- Higher Order Functions
 
 --
 
-### pure functions
+### Pure functions
 
-A function is pure if the return value is only determined by its input values, and does not produce side effects.
+Una función es pura si su valor de retorno está solo determinado por sus parametros de entrada y no produce efectos secundarios.
 
 ```javascript
 const greet = name => `Hi, ${name}`
 
-greet("Brianne") // 'Hi, Brianne'
+greet('Brianne') // 'Hi, Brianne'
 ```
 
 As opposed to each of the following:
 
 ```javascript
-window.name = "Brianne"
+window.name = 'Brianne'
 
 const greet = () => `Hi, ${window.name}`
 
@@ -121,7 +121,7 @@ A function which takes a function as an argument and/or returns a function.
 ```js
 const filter = (predicate, xs) => xs.filter(predicate)
 const is = type => x => Object(x) instanceof type
-filter(is(Number), [0, "1", 2, null]) // [0, 2]
+filter(is(Number), [0, '1', 2, null]) // [0, 2]
 ```
 
 --
@@ -156,20 +156,19 @@ Points-free function definitions look just like normal assignments without funct
 
 ## LIVE CODING
 
--- 
+--
 
 ## PILARES
 
-
-
 --
+
 ## PILARES
 
 ### funciones puras
 
 ```js
 const enhance = compose(
-  withState("count", "updateCountStateWith", 0),
+  withState('count', 'updateCountStateWith', 0),
   withHandlers({
     increment: ({ updateCountStateWith }) => updateCountStateWith(inc),
     decrement: ({ updateCountStateWith }) => updateCountStateWith(dec)
@@ -192,7 +191,7 @@ const enhance = compose(
 
 ```js
 const enhance = compose(
-  withState("count", "updateCountStateWith", 0),
+  withState('count', 'updateCountStateWith', 0),
   withHandlers({
     increment: ({ updateCountStateWith }) => updateCountStateWith(inc),
     decrement: ({ updateCountStateWith }) => updateCountStateWith(dec)
@@ -215,7 +214,7 @@ const enhance = compose(
 
 ```js
 const enhance = compose(
-  withState("count", "updateCountStateWith", 0),
+  withState('count', 'updateCountStateWith', 0),
   withHandlers({
     increment: ({ updateCountStateWith }) => updateCountStateWith(inc),
     decrement: ({ updateCountStateWith }) => updateCountStateWith(dec)
@@ -238,7 +237,7 @@ const enhance = compose(
 
 ```js
 const enhance = compose(
-  withState("count", "updateCountStateWith", 0),
+  withState('count', 'updateCountStateWith', 0),
   withHandlers({
     increment: ({ updateCountStateWith }) => updateCountStateWith(inc),
     decrement: ({ updateCountStateWith }) => updateCountStateWith(dec)
@@ -255,13 +254,14 @@ const enhance = compose(
 
 --
 
-
 ## QUESTIONS
 
--- 
+--
 
 ## QUE ESPERAMOS DE TI
+
 ---
+
 ## Example Vertical
 
 You can change separator in file `reveal-md.json`
@@ -269,6 +269,7 @@ You can change separator in file `reveal-md.json`
 See [reveal-md](https://github.com/webpro/reveal-md) info
 
 --
+
 ## Example 2
 
 Example 5
