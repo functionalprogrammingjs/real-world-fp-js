@@ -2,26 +2,26 @@
 
 --
 
-## Objectivos
+## Objetivos
 
-- Fomentar el uso del paradigma funcional en todo tipo de proyectos que utilicen Javascript como lenguaje
-- Eliminar la resistencia general a FP
-- Crear una comunidad de FP activa
+- Fomentar el uso del paradigma funcional en todo tipo de proyectos que utilicen Javascript como lenguaje.
+- Eliminar la resistencia general a FP.
+- Crear una comunidad de FP activa.
 
 --
 
-## Por qué FP: Minimizar el caos
+## Por qué FP
 
 - El estado es caos. FP aisla del caos, separándolo en un único lugar mas controlado.
-- Cada linea de código aumenta el caos. FP fomenta la abstracción y la reutilización, reduciendo las lines de código.
-- La complejidad es caos. FP facilita el la labor de testing al hacer uso de funciones puras.
+- La lógica de negocio es caos. FP fomenta la abstracción y la reutilización, reduciendo las líneas de código
+- La aplicaciones tienden al caos. FP facilita la legibilidad y el testing al hacer uso de entidades no acopladas entre si A.K.A funciones puras.
 
 --
 
 ## Por qué FP en JS
 
-- Por qué es el lenguaje mas utilizado del mundo, es el lenguaje de la web.
-- Por qué es un lenguaje funcional aunque muchos no lo crean.
+- Porque es el lenguaje mas utilizado del mundo, es el lenguaje de la web entre otros entornos.
+- Porque es un lenguaje funcional.
 
 --
 
@@ -36,13 +36,13 @@
 - Pure functions
 - Composition
 - Curry
-- Higher Order Functions
+- Higher Order functions
 
 --
 
 ### Pure functions
 
-Una función es pura si su valor de retorno está solo determinado por sus parametros de entrada y no produce efectos secundarios.
+Una función es pura si su valor de retorno está solo determinado por sus valores de entrada y si no produce efectos secundarios.
 
 ```javascript
 const greet = name => `Hi, ${name}`
@@ -50,7 +50,7 @@ const greet = name => `Hi, ${name}`
 greet('Brianne') // 'Hi, Brianne'
 ```
 
-As opposed to each of the following:
+En contraposición con lo siguiente:
 
 ```javascript
 window.name = 'Brianne'
@@ -64,7 +64,7 @@ greet() // "Hi, Brianne"
 
 ### Function Composition
 
-The act of putting two functions together to form a third function where the output of one function is the input of the other.
+El acto de poner dos funciones juntas para formar una tercera donde la salida de la primera es la entrada de la segunda.
 
 ```js
 const compose = (f, g) => a => f(g(a)) // Definition
@@ -79,9 +79,9 @@ floorAndToString(121.212121) // '121'
 
 ### Curry
 
-The process of converting a function that takes multiple arguments into a function that takes them one at a time.
+El proceso de convertir una función que coge múltiples parámetros en una función que los coge de uno en uno.
 
-Each time the function is called it only accepts one argument and returns a function that takes one argument until all arguments are passed.
+Cada vez que se llama a la función solo acepta un argumento y devuelve una función que coge solo un argumento, hasta que todos los argumentos se han pasado.
 
 ```js
 const sum = (a, b) => a + b
@@ -99,7 +99,7 @@ add2(10) // 12
 
 ### Auto Currying
 
-Transforming a function that takes multiple arguments into one that if given less than its correct number of arguments returns a function that takes the rest. When the function gets the correct number of arguments it is then evaluated.
+Transformar una función que coge múltiples parámetros en una que si se le pasa menos parametros, devuelve una función que toma el resto. Cuando la función coge el número correcto de párametros entonces se evalúa.
 
 ```js
 lodash & Ramda have a curry function that works this way.
@@ -116,7 +116,7 @@ curriedAdd(1)(2) // 3
 
 ### Higher-Order Functions (HOF)
 
-A function which takes a function as an argument and/or returns a function.
+Una función que coge como argumento una función y/o devuelve otra función.
 
 ```js
 const filter = (predicate, xs) => xs.filter(predicate)
@@ -128,7 +128,7 @@ filter(is(Number), [0, '1', 2, null]) // [0, 2]
 
 ### Point-Free Style
 
-Writing functions where the definition does not explicitly identify the arguments used. This style usually requires currying or other Higher-Order functions. A.K.A Tacit programming.
+Escribir funciones donde en la definición no se identifica de forma explícita sus parámetros. Este estilo normalmente necesita de currificación y de Higher Order functions. También se denomina programación tácita.
 
 ```js
 // Given
@@ -146,139 +146,32 @@ const incrementAll2 = map(add(1))
 
 --
 
-### POINT-FREE STYLE
-
-incrementAll identifies and uses the parameter numbers, so it is not points-free. incrementAll2 is written just by combining functions and values, making no mention of its arguments. It is points-free.
-
-Points-free function definitions look just like normal assignments without function or =>.
-
---
-
 ## LIVE CODING
 
 --
 
-## PILARES
+## REPASO
+
+Has visto funciones puras?
 
 --
 
-## PILARES
+## REPASO
 
-### funciones puras
-
-```js
-const enhance = compose(
-  withState('count', 'updateCountStateWith', 0),
-  withHandlers({
-    increment: ({ updateCountStateWith }) => updateCountStateWith(inc),
-    decrement: ({ updateCountStateWith }) => updateCountStateWith(dec)
-  }),
-  lifeCycle({
-    componentDidMount: async component => {
-      await delay(3000)
-      component.props.updateCountStateWith(inc)
-    }
-  }),
-  branch(({ count }) => count <= 0, Spinner)
-)
-```
+Has visto composición?
 
 --
 
-## PILARES
+## REPASO
 
-### compose
-
-```js
-const enhance = compose(
-  withState('count', 'updateCountStateWith', 0),
-  withHandlers({
-    increment: ({ updateCountStateWith }) => updateCountStateWith(inc),
-    decrement: ({ updateCountStateWith }) => updateCountStateWith(dec)
-  }),
-  lifeCycle({
-    componentDidMount: async component => {
-      await delay(3000)
-      component.props.updateCountStateWith(inc)
-    }
-  }),
-  branch(({ count }) => count <= 0, Spinner)
-)
-```
+Has visto currificación?
 
 --
 
-## PILARES
+## REPASO
 
-### curry
-
-```js
-const enhance = compose(
-  withState('count', 'updateCountStateWith', 0),
-  withHandlers({
-    increment: ({ updateCountStateWith }) => updateCountStateWith(inc),
-    decrement: ({ updateCountStateWith }) => updateCountStateWith(dec)
-  }),
-  lifeCycle({
-    componentDidMount: async component => {
-      await delay(3000)
-      component.props.updateCountStateWith(inc)
-    }
-  }),
-  branch(({ count }) => count <= 0, Spinner)
-)
-```
+Has visto Higher Order functions?
 
 --
-
-## PILARES
-
-### HOF
-
-```js
-const enhance = compose(
-  withState('count', 'updateCountStateWith', 0),
-  withHandlers({
-    increment: ({ updateCountStateWith }) => updateCountStateWith(inc),
-    decrement: ({ updateCountStateWith }) => updateCountStateWith(dec)
-  }),
-  lifeCycle({
-    componentDidMount: async component => {
-      await delay(3000)
-      component.props.updateCountStateWith(inc)
-    }
-  }),
-  branch(({ count }) => count <= 0, Spinner)
-)
-```
-
---
-
-## QUESTIONS
-
---
-
-## QUE ESPERAMOS DE TI
-
----
-
-## Example Vertical
-
-You can change separator in file `reveal-md.json`
-
-See [reveal-md](https://github.com/webpro/reveal-md) info
-
---
-
-## Example 2
-
-Example 5
-
---
-
-Example 6
-
---
-Example 7
 
 ---
